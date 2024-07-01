@@ -20,8 +20,8 @@ public record EmployeeDTO(
         String email,
         @NotBlank(message = "{Password must not be empty!")
         @Size(min = 5, message = "Password must be at least 5 characters.")
+        String password,
         @URL(message = "Avatar URL must be a valid URL address!")
-        String Password,
         String avatarUrl
 ) {
 }

@@ -29,16 +29,7 @@ public class EmployeesController {
         return employeesService.getEmployees(page, size, sortBy);
     }
 
-    //2. POST http://localhost:3001/employees (+body)
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Employee save(@RequestBody @Validated EmployeeDTO body, BindingResult validationResult) {
-        if (validationResult.hasErrors()) {
-            System.out.println(validationResult.getAllErrors());
-            throw new BadRequestException(validationResult.getAllErrors());
-        }
-        return employeesService.save(body);
-    }
+    //2. POST http://localhost:3001/employees (+body) look auth
 
     //3. GET one http://localhost:3001/employees/{id}
     @GetMapping("/{id}")

@@ -44,7 +44,7 @@ public class EmployeesService {
                 }
         );
 
-        Employee newEmployee = new Employee(body.username(), body.firstName(), body.lastName(), body.email(), body.Password(), body.avatarUrl());
+        Employee newEmployee = new Employee(body.username(), body.firstName(), body.lastName(), body.email(), body.password(), body.avatarUrl());
         newEmployee.setAvatarURL("https://ui-avatars.com/api/?name=" + newEmployee.getFirstName() + '+' + newEmployee.getLastName());
         return employeesDAO.save(newEmployee);
     }
@@ -78,7 +78,7 @@ public class EmployeesService {
         found.setFirstName(updatedEmployee.firstName());
         found.setLastName(updatedEmployee.lastName());
         found.setEmail(updatedEmployee.email());
-        found.setPassword(updatedEmployee.Password());
+        found.setPassword(updatedEmployee.password());
         found.setAvatarURL(found.getAvatarURL());
         return employeesDAO.save(found);
     }
