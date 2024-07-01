@@ -44,7 +44,7 @@ public class EmployeesService {
                 }
         );
 
-        Employee newEmployee = new Employee(body.username(), body.firstName(), body.lastName(), body.email(), body.avatarUrl());
+        Employee newEmployee = new Employee(body.username(), body.firstName(), body.lastName(), body.email(), body.Password(), body.avatarUrl());
         newEmployee.setAvatarURL("https://ui-avatars.com/api/?name=" + newEmployee.getFirstName() + '+' + newEmployee.getLastName());
         return employeesDAO.save(newEmployee);
     }
@@ -78,8 +78,13 @@ public class EmployeesService {
         found.setFirstName(updatedEmployee.firstName());
         found.setLastName(updatedEmployee.lastName());
         found.setEmail(updatedEmployee.email());
+        found.setPassword(updatedEmployee.Password());
         found.setAvatarURL(found.getAvatarURL());
         return employeesDAO.save(found);
+    }
+
+    public Employee findByEmail(String email) {
+        return employeesDAO.findByEmail(email).orElseThrow(() -> new NotFoundException("User with email " + email + " not found!"));
     }
 
     public String uploadAvatar(MultipartFile file) throws IOException {

@@ -9,5 +9,7 @@ import java.util.UUID;
 public interface EmployeesDAO extends JpaRepository<Employee, UUID> {
     Optional<Employee> findByEmail(String email);
 
+    boolean existsByEmail(String email);
+
     Optional<Employee> findByUsername(String username);
 }

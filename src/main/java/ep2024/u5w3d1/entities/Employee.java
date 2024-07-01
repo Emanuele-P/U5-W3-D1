@@ -26,17 +26,20 @@ public class Employee {
     private String lastName;
 
     private String email;
+    private String password;
+
     @Column(name = "avatar_url")
     private String avatarURL;
 
     @OneToMany(mappedBy = "employee")
     private List<Device> devices = new ArrayList<>();
 
-    public Employee(String username, String firstName, String lastName, String email, String avatarURL) {
+    public Employee(String username, String firstName, String lastName, String email, String password, String avatarURL) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.avatarURL = avatarURL;
     }
 }
